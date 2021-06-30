@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//generate all crud options from ProductController generated automatically 
-Route::resource('products','ProductController');
+//generate all crud options from ProductController generated automatically
+//Route::resource('/products','ProductController');
+Route::resource('/products', ProductController::class);
