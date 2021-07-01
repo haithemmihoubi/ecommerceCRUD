@@ -15,4 +15,6 @@
 ## screenshots of the project
 
 ![image](https://user-images.githubusercontent.com/64318421/124200289-e11eae80-dacc-11eb-80c3-a4a62400b431.png)
+![screenshot-127 0 0 1_8000-2021 07 02-00_33_43](https://user-images.githubusercontent.com/64318421/124200424-3a86dd80-dacd-11eb-802b-151e8b1babdf.png)
+
 
