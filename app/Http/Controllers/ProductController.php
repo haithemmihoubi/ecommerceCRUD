@@ -12,16 +12,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
-    { //get all products
+    {   //get all products
        // $products=Product::all();
-//return the latest added products with pagination of  10 products per page
+      //return the latest added products with pagination of  10 products per page
+
        $products=Product::latest()->paginate(6);
-// compact('products') send to the view
+          // compact('products') send to the view
        return view('product.index',compact('products'));
 
-
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-
+ // create function role is to redirect to the page where you  want tpo  add (form page)
+ // the store function adds the information  from the page (form page) and store it to the database
         return view('product.create');
 
     }
@@ -42,16 +50,21 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {$request->validate(
+    {
+         // the store function adds the information  from the page (form page) and store it to the database
+
+        $request->validate(
     [    'name'=>'required',
         'price'=>'required',
         'details'=>'required'
         ]
     );
         $products=Product::create($request->all());
-        return redirect()->route('product.index')
+        return redirect()->route('products.index')
         ->with('success','product added successfully');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -87,13 +100,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
-    {$request->validate(
-        [    'name'=>'required',
-            'price'=>'required',
-            'details'=>'required'
+    {
+         $request->validate(
+            [   'name'=>'required',
+             'price'=>'required',
+             'details'=>'required'
             ]
         );
-            $products = Product::where('product', $product)->update($request->all());
+            $products = Product::update($request->all());
             return redirect()->route('product.index')
             ->with('success','product added successfully');
         }

@@ -1,44 +1,39 @@
 @extends('product.layout')
 @section('content')
 
-
-<form>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Example select</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect2">Example multiple select</label>
-      <select multiple class="form-control" id="exampleFormControlSelect2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-  </form>
+    <div class="mx-auto card" style="width: 60%;">
 
 
 
+        <form action="{{route('products.store')}}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" name="name" class="form-control" aria-describedby="emailHelp" placeholder="product name">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Price</label>
+                <input type="text" name="price" class="form-control" aria-describedby="emailHelp"
+                    placeholder="product price">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Details</label>
+                <textarea class="form-control" name="details" rows="3"></textarea>
+            </div>
+            <hr>
+            <br>
+            <div class="form-group mx-auto">
+
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
 
 @endsection
-
-
-
-
-

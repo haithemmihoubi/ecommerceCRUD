@@ -1,49 +1,81 @@
 @extends('product.layout')
 @section('content')
-    <div class="jumbotron container">
+
+
+
+    <h1>product list</h1>
+    <br>
+    <a class="btn btn-outline-info" href="{{ route('products.create') }}">create</a>
+
+    <br>
+
+@if ($message=Session::get('success'))
+
+<div class="alert alert-success" role="alert">
+{{$message }}
+  </div>
+@endif
+
+
+
+    <div class="card position-relative">
 
         <div class="container">
 
-
-            <table class="table">
+            <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col">product name</th>
-                        <th scope="col">product price </th>
-                        <th scope="col">product description</th>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">price</th>
+                        <th scope="col">detail</th>
                         <th scope="col">actions</th>
 
                     </tr>
                 </thead>
+                @php
+                    $i = 0;
+                @endphp
                 <tbody>
                     @foreach ($products as $item)
 
                         <tr>
-                            <th scope="row">{{ ++$i }}</th>
+                            <th scope="row">{{ $i++ }}</th>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->price }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td>{{ $item->details }}</td>
                             <td>
-                                <a href=" {{ route('products.edit') }} ">edit</a>
+                                <div class="d-flex align-items-center">
+                                    <a class="btn btn-outline-primary" href="{{ route('products.edit', $item->id) }}">Edit</a>
 
-                                <a href="{{ route('products.show') }}">update</a>
-                                <form action="{{ route('products.destroy', $item->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit btn btn-danger">delete</button>
-                                </form>
+                                    <a class="btn btn-outline-success" href="{{ route('products.show', $item->id) }}">show</a>
+                                    <form action="{{ route('products.destroy', $item->id) }}">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger">delete</button>
+
+                                    </form>
+                                </div>
                             </td>
-
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
+
+            <!--  TODO for the pagination -->
+
             {!! $products->links() !!}
+        </div>
 
 
-        @endsection
 
-</div>
-</div>
+    </div>
+
+
+
+
+
+
+@endsection
