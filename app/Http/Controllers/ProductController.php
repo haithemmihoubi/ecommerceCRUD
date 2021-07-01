@@ -53,8 +53,8 @@ class ProductController extends Controller
     {
          // the store function adds the information  from the page (form page) and store it to the database
 
-        $request->validate(
-    [    'name'=>'required',
+        $request->validate([
+        'name'=>'required',
         'price'=>'required',
         'details'=>'required'
         ]
@@ -107,8 +107,8 @@ class ProductController extends Controller
              'details'=>'required'
             ]
         );
-            $products = Product::update($request->all());
-            return redirect()->route('product.index')
+            $product->update($request->all());
+            return redirect()->route('products.index')
             ->with('success','product added successfully');
         }
 
@@ -121,7 +121,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete() ;
-        return redirect()->route('product.index')
+        return redirect()->route('products.index')
         ->with('success','product deleted successfully');
     }
 }

@@ -1,22 +1,24 @@
 @extends('product.layout')
 @section('content')
-
-
+<br>
+<br>
+<div class="d-flex justify-content-center">
 
     <h1>product list</h1>
     <br>
+    <div>
     <a class="btn btn-outline-info" href="{{ route('products.create') }}">create</a>
-
+</div>
     <br>
 
+
+</div>
 @if ($message=Session::get('success'))
 
 <div class="alert alert-success" role="alert">
 {{$message }}
   </div>
 @endif
-
-
 
     <div class="card position-relative">
 
@@ -42,7 +44,7 @@
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->price }}  DT</td>
                             <td>{{ $item->details }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -50,7 +52,6 @@
 
                                     <a class="btn btn-outline-success" href="{{ route('products.show', $item->id) }}">show</a>
                                     <form action="{{ route('products.destroy', $item->id) }}">
-
                                         @csrf
                                         @method('DELETE')
 
