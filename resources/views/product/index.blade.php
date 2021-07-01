@@ -51,7 +51,7 @@
                                     <a class="btn btn-outline-primary" href="{{ route('products.edit', $item->id) }}">Edit</a>
 
                                     <a class="btn btn-outline-success" href="{{ route('products.show', $item->id) }}">show</a>
-                                    <form action="{{ route('products.destroy', $item->id) }}">
+                                    <form action="{{ route('products.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 

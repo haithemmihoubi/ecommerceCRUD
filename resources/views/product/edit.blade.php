@@ -37,6 +37,7 @@
 
         </form>
 
+        <a href="{{ Route('products.index') }}" class="btn btn-outline-primary">all products   </a>
 
 
     </div>
